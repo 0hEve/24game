@@ -4,7 +4,7 @@ A local arithmetic card game with a configurable target range, 2–9 cards, exac
 
 ## Run locally
 
-Use Node.js 22+ and pnpm. The club leaderboard reads `DATABASE_URL` from `.env.local`. Copy the example file and set that variable to a hosted Postgres connection string (Neon, Supabase, or any other Postgres host). The connection string and the database stay off GitHub.
+Use Node.js 22+ and pnpm. The club leaderboard reads `DATABASE_URL` from `.env.local`. Copy the example file and set that variable to a hosted Postgres connection string (Neon, Supabase, or any other Postgres host).
 
 ```sh
 pnpm install
@@ -46,11 +46,7 @@ Targets are constrained by reachability and are not uniformly distributed over a
 
 Historical records save the verified expression tree so replay does not depend on finding it again. The most recent 200 attempts and preferences are stored in this browser's localStorage. Clearing site data removes that local history. The timer measures elapsed wall time, including time spent reviewing hints/history; completed attempts stop the timer.
 
-Algorithms were researched against these primary sources, adapting the search structure to allow exact rational and non-positive intermediates:
 
-- Graham Hutton, [The Countdown problem](https://people.cs.nott.ac.uk/pszgmh/countdown.pdf).
-- Jean-Marc Alliot and Charlie Vanaret, [(The Final) Countdown](https://arxiv.org/abs/1502.05450).
-- Alcock et al., [Arithmetic Expression Construction](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ISAAC.2020.12).
 
 ## Verify
 
@@ -58,8 +54,6 @@ Algorithms were researched against these primary sources, adapting the search st
 pnpm test
 pnpm build
 ```
-
-UI checks were also run in Playwright Chromium at desktop and mobile sizes. Reduced-motion preferences are respected. The `start.command` fallback uses the existing Codex-bundled Node runtime on this Mac if Node is not on PATH.
 
 ## Club identities and permanent ratings
 
