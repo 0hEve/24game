@@ -1,0 +1,27 @@
+{
+  "name": "twenty-four-club",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.js",
+    "db:local": "node scripts/local-db.mjs",
+    "db:migrate": "node scripts/migrate.mjs",
+    "test:server": "node --test tests/server*.test.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "lucide-react": "^0.468.0",
+    "postgres": "^3.4.9",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.0",
+    "playwright": "^1.56.0",
+    "vite": "^7.2.0"
+  }
+}

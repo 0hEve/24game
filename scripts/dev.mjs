@@ -1,0 +1,11 @@
+import {spawn} from 'node:child_process';
+import {existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import dotenv from 'dotenv';
+import {ensureLocalDatabase} from './local-db.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url));process.chdir(root);
+dotenv.config({path:'.env.local',quiet:true});
+if(process.env.DATABASE_URL?.includes('127.0.0.1:54324/')&&existsSync('.data/postgres/PG_VERSION'))ensureLocalDatabase();
+const child=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1',...process.argv.slice(2)],{stdio:'inherit',env:process.env});
+for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>child.kill(signal));
+child.on('exit',code=>process.exit(code??0));
